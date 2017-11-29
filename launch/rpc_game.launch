@@ -1,0 +1,16 @@
+<launch>
+	<node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
+		<param name="pixel_format" value="yuyv" />
+	</node>
+
+	<node name="hcircle" pkg="opencv_apps" type="hough_circles" output="screen">
+		<remap from="image" to="/usb_cam/image_raw"/>
+	</node>
+
+	<node name="rpc_core" pkg="rpc" type="rpc_core.py" output="screen">
+	</node>
+
+	<node name="SerialSend" pkg="rpc" type="SerialSend.py" output="screen">
+	</node>
+
+</launch>
