@@ -5,7 +5,7 @@ import time
 import serial
 import math
 from std_msgs.msg import String
-from rpc.msg import CircleArrayStamped
+from rps.msg import Num
 
 detect = 0
 count = 0
@@ -68,7 +68,7 @@ def rpc_core():
 	rospy.init_node('rpc_core', anonymous=True)
 	rospy.loginfo("read Start!")
 
-	rospy.Subscriber("/hcircle/circles", CircleArrayStamped, callback)
+	rospy.Subscriber("/numC", Num, callback)
 
 	rospy.Subscriber('status', String, callback2)
 	rate = rospy.Rate(20)
